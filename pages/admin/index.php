@@ -12,10 +12,26 @@ require('inc/includes/password.php');
 $page = "admin-index";
 
 // Install file check
+/*
+ Old install file check
 clearstatcache();
 if(file_exists("pages/install.php")){
 	unlink("pages/install.php");
+}*/
+if(isset($_GET['from'])){
+	$from = $_GET['from'];
+	if($from == "install"){
+		//Removes the install.php if is sent from install.php
+		//TDL:
+		// Add more checks
+		if(file_exists("pages/install.php")){
+			unlink("pages/install.php");
+		}
+		
+	}
+	
 }
+
 
 /*
  *  Version check
